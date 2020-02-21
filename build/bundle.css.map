@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import RouteGenerator from \"./route-generator\";\n  import { onMount } from \"svelte\";\n\n  let route = RouteGenerator.generate();\n  let distance = RouteGenerator.getDistance(route);\n\n  onMount(() => {\n    //console.log(RouteGenerator.getDistance(route));\n  });\n\n  function generateNewRoute(event) {\n    route = RouteGenerator.generate();\n    distance = RouteGenerator.getDistance(route);\n    console.log(route);\n  }\n</script>\n\n<style>\n  main {\n    text-align: center;\n    padding: 1em;\n    max-width: 240px;\n    margin: 0 auto;\n  }\n\n  h1 {\n    color: #ff3e00;\n    text-transform: uppercase;\n    font-size: 4em;\n    font-weight: 100;\n  }\n\n  .campground,\n  .distance,\n  .trailhead {\n    margin: 8px;\n    font-weight: bold;\n  }\n\n  .campground {\n    /* padding: 10px; */\n  }\n\n  .distance {\n    font-size: 12px;\n  }\n\n  .trail {\n    height: 10px;\n    width: 1px;\n    border-left: dashed black 1px;\n    display: block;\n    margin: auto;\n  }\n\n  @media (min-width: 640px) {\n    main {\n      max-width: none;\n    }\n  }\n</style>\n\n<main>\n  <h1>Glacier National Park</h1>\n  <h2>Backcountry Route Generator</h2>\n  <button on:click={generateNewRoute}>Generate</button>\n  <div class=\"trailhead\">Start at {route[0].trailHead.code} trailhead</div>\n  {#each route as item}\n    <span class=\"trail\" />\n    <div class=\"distance\">{item.distance} mi</div>\n    <span class=\"trail\" />\n    <div class=\"campground\">{item.code}</div>\n  {/each}\n  <div>Total Distance: {distance} miles</div>\n</main>\n"
+  ],
+  "names": [],
+  "mappings": "AAmBE,IAAI,cAAC,CAAC,AACJ,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AAChB,CAAC,AAED,EAAE,cAAC,CAAC,AACF,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,yBAAW,CACX,uBAAS,CACT,UAAU,cAAC,CAAC,AACV,MAAM,CAAE,GAAG,CACX,WAAW,CAAE,IAAI,AACnB,CAAC,AAMD,SAAS,cAAC,CAAC,AACT,SAAS,CAAE,IAAI,AACjB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,GAAG,CACV,WAAW,CAAE,MAAM,CAAC,KAAK,CAAC,GAAG,CAC7B,OAAO,CAAE,KAAK,CACd,MAAM,CAAE,IAAI,AACd,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzB,IAAI,cAAC,CAAC,AACJ,SAAS,CAAE,IAAI,AACjB,CAAC,AACH,CAAC"
+}
