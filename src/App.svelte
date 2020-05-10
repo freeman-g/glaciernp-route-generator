@@ -1,18 +1,12 @@
 <script>
   import RouteGenerator from "./route-generator";
-  import { onMount } from "svelte";
 
   let route = RouteGenerator.generate();
   let distance = RouteGenerator.getDistance(route);
 
-  onMount(() => {
-    //console.log(RouteGenerator.getDistance(route));
-  });
-
   function generateNewRoute(event) {
     route = RouteGenerator.generate();
     distance = RouteGenerator.getDistance(route);
-    console.log(route);
   }
 </script>
 
